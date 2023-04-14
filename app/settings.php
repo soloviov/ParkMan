@@ -21,6 +21,22 @@ return function (ContainerBuilder $containerBuilder) {
                     'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
                     'level' => Logger::DEBUG,
                 ],
+                'db' => [
+                    'driver' => 'mysql',
+                    'host' => 'mariadb',
+                    'username' => 'parkman',
+                    'database' => 'parkman',
+                    'password' => 'parkman',
+                    'charset' => 'utf8mb4',
+                    'collation' => 'utf8mb4_unicode_ci',
+                    'flags' => [
+                        PDO::ATTR_PERSISTENT => false, // Turn off persistent connections
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Enable exceptions
+                        PDO::ATTR_EMULATE_PREPARES => true, // Emulate prepared statements
+                        PDO::ATTR_STRINGIFY_FETCHES => false,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // Set default fetch mode to array
+                    ],
+                ],
             ]);
         }
     ]);

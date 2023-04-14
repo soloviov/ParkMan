@@ -40,3 +40,9 @@ composer test
 ```
 
 That's it! Now go build something cool.
+
+in case to check functionality you need to run `curl` command in terminal or copy/paste URL in browser
+
+```bash
+curl 'http://127.0.0.1:8080/test?country=Finland&owner=Parkkitalo%20OY&location[lat]=60.1686739014875&location[lon]=24.9301629520454&location[radius]=200'
+```
